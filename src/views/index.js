@@ -11,3 +11,8 @@ export { default as SignUp } from './SignUp';
 export { default as Typography } from './Typography';
 export { default as UserList } from './UserList';
 export { default as MeuExemplo } from './MeuExemplo';
+export { default as GerenciarAprovacaoDeDenuncia } from './Coordenador/GerenciarAprovacaoDeDenuncia';
+export { default as TelaPrincipalCoordenador } from './Coordenador/TelaPrincipalCoordenador';
+export { default as DenunciasAprovadas } from './Coordenador/DenunciasAprovadas';
+export { default as DenunciaCoordenador } from './Coordenador/DenunciaCoordenador';
+export { default as EncerrarDenuncia } from './Coordenador/EncerrarDenuncia';

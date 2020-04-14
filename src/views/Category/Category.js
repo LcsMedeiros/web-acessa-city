@@ -109,7 +109,7 @@ class Category extends React.Component {
       })
     }
 
-    async refreshScreen() {
+    /* async refreshScreen() {
       let categories = await API.get('/category');
       categories = categories.data;
       //console.log(categories);
@@ -118,7 +118,7 @@ class Category extends React.Component {
               categories
           }
       })      
-    }
+    } */
 
     async componentDidMount() {
         let categories = await API.get('/category');

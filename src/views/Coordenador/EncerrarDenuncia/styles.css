@@ -1,0 +1,18 @@
+#geral{
+  margin-right: 10%;
+  margin-bottom: 25px;
+}
+.image{
+  width: 500px;
+  margin: 0px 25px 0px 0px ;
+}
+#denuncias-aprovadas{
+  margin-top: 100px;
+}
+#geral{
+  margin: auto 0;
+}
+#cartao{
+  margin: auto 0;
+}
+

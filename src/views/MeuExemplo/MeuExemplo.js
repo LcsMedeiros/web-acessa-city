@@ -36,22 +36,22 @@ const MeuExemplo = props => {
             })
         } else {
             // No user is signed in.
-        }       
+        }
 
         console.log(isAdmin)
-    }    
+    }
 
-    React.useEffect(() => {        
+    React.useEffect(() => {
         // listen for auth state changes
         CarregarPrefeituras();
         const unsubscribe = firebase.auth().onAuthStateChanged(onChange)
         console.log(3)
         // unsubscribe to the listener when unmounting
         return () => unsubscribe()
-        }, [])
+    }, [])
 
     React.useEffect(() => {
-        CarregarPrefeituras();        
+        CarregarPrefeituras();
     }, [])
 
     const [values, setValues] = useState({
@@ -65,12 +65,12 @@ const MeuExemplo = props => {
 
     async function CarregarPrefeituras() {
         let prefeituras = await API.get('/city-hall');
-        prefeituras = prefeituras.data;        
+        prefeituras = prefeituras.data;
 
         setPrefeituras({
             ...prefeituras,
             prefeituras: prefeituras
-        })        
+        })
     }
 
     return (
@@ -78,11 +78,11 @@ const MeuExemplo = props => {
             {values.admin &&
                 <h1>ADMIN</h1>
             }
-            
+
             {
-            prefeituras.prefeituras.map(prefeitura => (
-                <h3>{prefeitura.name}</h3>
-            ))
+                prefeituras.prefeituras.map(prefeitura => (
+                    <h3>{prefeitura.name}</h3>
+                ))
             }
         </div>
     )

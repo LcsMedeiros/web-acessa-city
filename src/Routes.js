@@ -17,7 +17,12 @@ import {
   NotFound as NotFoundView,
   Category as CategoryView,
   CityHallCreate as CityHallCreateView,
-  MeuExemplo as MeuExemploBanana
+  MeuExemplo as MeuExemploBanana,
+  GerenciarAprovacaoDeDenuncia as GerenciarAprovacaoDeDenunciaView,
+  TelaPrincipalCoordenador as TelaPrincipalCoordenadorView,
+  DenunciasAprovadas as DenunciasAprovadasView,
+  DenunciaCoordenador as DenunciaCoordenadorView,
+  EncerrarDenuncia as EncerrarDenunciaView
 } from './views';
 
 const Routes = () => {
@@ -45,10 +50,10 @@ const Routes = () => {
         exact
         layout={MainLayout}
         path="/cityhall-create"
-      />      
+      />
       <RouteWithLayout
         component={DashboardView}
-        exact
+        exact  
         layout={MainLayout}
         path="/dashboard"
       />
@@ -106,7 +111,38 @@ const Routes = () => {
         layout={MinimalLayout}
         path="/not-found"
       />
-      <Redirect to="/not-found" />
+      <RouteWithLayout
+        component={GerenciarAprovacaoDeDenunciaView}
+        exact
+        layout={MainLayout}
+        path="/gerenciar-aprovacao-de-denuncia"
+      />
+      <RouteWithLayout
+        component={TelaPrincipalCoordenadorView}
+        exact
+        layout={MainLayout}
+        path="/tela-principal-coordenador"
+      />
+      <RouteWithLayout
+        component={DenunciasAprovadasView}
+        exact
+        layout={MainLayout}
+        path="/denuncias-aprovadas"
+      />
+      <RouteWithLayout
+        component={EncerrarDenunciaView}
+        exact
+        layout={MainLayout}
+        path="/encerrar-denuncia/:id"
+      />
+      <RouteWithLayout
+        component={DenunciaCoordenadorView}
+        exact
+        layout={MainLayout}
+        path="/denuncia-coordenador/:id"
+      />      
+
+      <Redirect to="/not-found" />      
     </Switch>
   );
 };
