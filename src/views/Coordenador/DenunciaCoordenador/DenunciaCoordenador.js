@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './styles.css';
+import API from '../../../utils/API';
 import { makeStyles } from '@material-ui/core/styles';
 import { useParams } from 'react-router-dom';
 import {
@@ -23,20 +24,39 @@ import {
   Grid,
 } from '@material-ui/core';
 
-const useStyles = makeStyles({
+/* const useStyles = makeStyles({
   root: {
     maxWidth: 700,
   },
   cartao: {
 
   }
-});
+}); */
 
-const DenunciaCoordenador = () => {
-  const classes = useStyles();
-  let { id } = useParams();
+class DenunciaCoordenador extends React.Component {
 
-  const [denuncia, setDenuncia] = useState([
+  constructor(props) {
+    super(props);
+
+    this.state = {
+        reports: [],
+    }
+  }
+  render(){
+    const reports = this.state.reports;
+  
+    const useStyles = makeStyles(theme => ({
+      root: {
+        maxWidth: 700,
+        maxHeight: 700,
+      },
+      cartao: {
+    
+      }
+    }));
+  /* let { id } = useParams(); 
+
+  /* const [denuncia, setDenuncia] = useState([
     {
       "userId": "553b0d79-20c1-49f3-8c2d-820128a293af",
       "categoryId": "54301122-bcea-404d-be0b-f1906a512c65",
@@ -61,21 +81,26 @@ const DenunciaCoordenador = () => {
   function TesteBotao(denuncia) {
     let ultimasDenuncias = [...denuncia];
     setDenuncia(...denuncia, ultimasDenuncias);
-  }
+  } */
+  
   return (
     <div id="geral">
       <div id="cartao" >
       </div>
       <div id="cartao">
-        <Card className={classes.root}>
+        <Card /* className={classes.root} */
+        style={{
+          maxWidth: 700,
+          maxHeight: 700,
+        }}>
           <CardContent>
             <div>
               <div>
-                {denuncia.map(denuncia => (
+                {reports.map(report => (
                   <div>
-                    <CardHeader title={id} />
-                    <CardHeader title={denuncia.title} />
-                    <img class="image" src={denuncia.img_url} />
+                    {<CardHeader title={report.id} />}
+                    <CardHeader title={report.title} />
+                    <img class="image" src={report.img_url} />
                   </div>
                 ))}
 
@@ -85,13 +110,17 @@ const DenunciaCoordenador = () => {
             </div>
           </CardContent>
         </Card>
-        <Card className={classes.root}>
+        <Card /* className={classes.root} */
+        style={{
+          maxWidth: 700
+        }}
+        >
           <CardContent>
             <div>
               <CardHeader title="Descrição" />
-              {denuncia.map(denuncia => (
+              {reports.map(report => (
                 <div>
-                  <Typography align="justify">{denuncia.description}</Typography>
+                  <Typography align="justify">{report.description}</Typography>
                 </div>
               ))}
             </div>
@@ -126,6 +155,16 @@ const DenunciaCoordenador = () => {
       </CardActions>
     </div>
   )
+ }
+ async componentDidMount() {
+  let reports = await API.get('/report?status=c37d9588-1875-44dd-8cf1-6781de7533c3');
+  reports = reports.data;
+  this.setState(function(state, props) {
+      return {
+          reports
+      }
+  })
+}
 }
 
 export default DenunciaCoordenador;

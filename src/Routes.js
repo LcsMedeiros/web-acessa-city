@@ -18,11 +18,14 @@ import {
   Category as CategoryView,
   CityHallCreate as CityHallCreateView,
   MeuExemplo as MeuExemploBanana,
+  DenunciationList as DenunciationView,
   GerenciarAprovacaoDeDenuncia as GerenciarAprovacaoDeDenunciaView,
   TelaPrincipalCoordenador as TelaPrincipalCoordenadorView,
-  DenunciasAprovadas as DenunciasAprovadasView,
+  HistoricoDenuncias as HistoricoDenunciasView,
   DenunciaCoordenador as DenunciaCoordenadorView,
-  EncerrarDenuncia as EncerrarDenunciaView
+  EncerrarDenuncia as EncerrarDenunciaView,
+  FormAprovarDenuncia as FormAprovarDenuncia,
+  FormNegarDenuncia as FormNegarDenuncia
 } from './views';
 
 const Routes = () => {
@@ -112,6 +115,12 @@ const Routes = () => {
         path="/not-found"
       />
       <RouteWithLayout
+        component={DenunciationView}
+        exact
+        layout={MainLayout}
+        path="/denunciations"
+       />  
+      <RouteWithLayout
         component={GerenciarAprovacaoDeDenunciaView}
         exact
         layout={MainLayout}
@@ -124,10 +133,10 @@ const Routes = () => {
         path="/tela-principal-coordenador"
       />
       <RouteWithLayout
-        component={DenunciasAprovadasView}
+        component={HistoricoDenunciasView}
         exact
         layout={MainLayout}
-        path="/denuncias-aprovadas"
+        path="/historico-denuncias"
       />
       <RouteWithLayout
         component={EncerrarDenunciaView}
@@ -140,7 +149,19 @@ const Routes = () => {
         exact
         layout={MainLayout}
         path="/denuncia-coordenador/:id"
+      />  
+      <RouteWithLayout
+        component={FormAprovarDenuncia}
+        exact
+        layout={MainLayout}
+        path="/form-aprovar-denuncia"
       />      
+      <RouteWithLayout
+        component={FormNegarDenuncia}
+        exact
+        layout={MainLayout}
+        path="/form-negar-denuncia"
+      />  
 
       <Redirect to="/not-found" />      
     </Switch>

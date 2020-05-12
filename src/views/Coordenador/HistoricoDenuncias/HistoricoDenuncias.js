@@ -18,13 +18,13 @@ import {
   Modal
 } from '@material-ui/core';
 
-class GerenciarAprovacaoDeDenuncia extends React.Component {
+class HistoricoDenuncias extends React.Component {
   
   constructor(props) {
     super(props);
 
     this.state = {
-        reports: [],
+        reports: [],        
     }
   }
 
@@ -33,7 +33,7 @@ class GerenciarAprovacaoDeDenuncia extends React.Component {
     
     return (
       <div>
-        <h2>Gerenciar aprovação de denúncias</h2>
+        <h2>Histórico</h2>
         <div id="geral" align="right">          
         </div>
         <Table>
@@ -42,6 +42,7 @@ class GerenciarAprovacaoDeDenuncia extends React.Component {
               <TableCell>Id</TableCell>
               <TableCell>Titulo</TableCell>
               <TableCell>Data</TableCell>
+              <TableCell>Status</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -52,7 +53,8 @@ class GerenciarAprovacaoDeDenuncia extends React.Component {
               >
                 <TableCell><a href={`/denuncia-coordenador/${report.id}`}>{report.id}</a></TableCell>
                 <TableCell>{report.title}</TableCell>
-                <TableCell>{report.creationDate}</TableCell>
+                <TableCell>{report.creationDate}</TableCell>                
+                <TableCell>{report.reportStatus.description}</TableCell>
 
               </TableRow>
             ))}
@@ -75,4 +77,4 @@ class GerenciarAprovacaoDeDenuncia extends React.Component {
 
 }
 
-export default GerenciarAprovacaoDeDenuncia;
+export default HistoricoDenuncias;
